@@ -81,6 +81,8 @@ void vector_t::push_back(int value)
 
 void vector_t::pop_back()
 {
+	if (size_ == 0)
+		return;
 	size_ = size_ - 1;
 	if ((size_ * 4 <= capacity_) && (size_ != 0)) capacity_ = capacity_ / 2;
 	int* elements_2 = new int[capacity_];
