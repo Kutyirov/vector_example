@@ -24,7 +24,14 @@ vector_t & vector_t::operator =(vector_t const & other)
 
 bool vector_t::operator ==(vector_t const & other) const
 {
-	return false;
+	bool flag = false;
+	if (size_==other.size_){
+		flag = true;
+		for (int i = 0; i < size_; i++)
+			if (elements_[i] != other.elements_[i])
+				flag = false;
+	}
+	return flag;
 }
 
 vector_t::~vector_t()
@@ -47,9 +54,15 @@ std::size_t vector_t::capacity() const
 void vector_t::push_back(int value)
 {
 	if (size_ == capacity_) capacity_ *= 2;
+	int* elements_2 = new int[capacity_];
+	for (int i = 0; i < size_; i++)
+		elements_2[i] = elements_[i];
+	elements_2[size_] = value;
 	size_++;
 	delete[] elements_;
-	elements_ = new int [capacity_];
+	int * elements_ = new int[capacity_];
+	elements_ = elements_2;
+	delete[] elements_2;
 }
 
 void vector_t::pop_back()
