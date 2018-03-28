@@ -46,7 +46,7 @@ vector_t::~vector_t()
 {
 	size_ = 0;
 	capacity_ = 0;
-	delete [] elements_;
+	delete[] elements_;
 }
 
 std::size_t vector_t::size() const
@@ -108,5 +108,5 @@ int vector_t::operator [](std::size_t index) const
 
 bool operator !=(vector_t const & lhs, vector_t const & rhs)
 {
-	return (!(lhs == rhs));
+	return !(lhs == rhs);
 }
