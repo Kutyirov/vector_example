@@ -5,12 +5,15 @@
 
 vector_t::vector_t()
 {
-	vector.size_=0;
-	vector.capacity_=0;
+	size_=0;
+	capacity_=0;
 }
 
 vector_t::vector_t(vector_t const & other)
 {
+	elements_=other.elements_;
+	size_=other.size_;
+	capacity_=other.capacity_;
 }
 
 vector_t & vector_t::operator =(vector_t const & other)
@@ -29,12 +32,12 @@ vector_t::~vector_t()
 
 std::size_t vector_t::size() const
 {
-    return vector.size_;
+    return size_;
 }
 
 std::size_t vector_t::capacity() const
 {
-    return vector.capacity_;
+    return capacity_;
 }
 
 void vector_t::push_back(int value)
