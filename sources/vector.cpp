@@ -5,6 +5,8 @@
 
 vector_t::vector_t()
 {
+	size_=0;
+	capacity_=0;
 }
 
 vector_t::vector_t(vector_t const & other)
