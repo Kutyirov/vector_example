@@ -83,3 +83,4 @@ bool operator !=(vector_t const & lhs, vector_t const & rhs)
 {
 	return true;
 }
+//
