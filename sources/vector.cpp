@@ -21,15 +21,12 @@ vector_t::vector_t(vector_t const & other)
 
 vector_t & vector_t::operator =(vector_t const & other)
 {
-	if (elements_ != other.elements_) {
-		size_ = other.size_;
-		capacity_ = other.capacity_;
-		delete [] elements_;
-		elements_ = new int[capacity_];
-		for (int i = 0; i < size_; i++)
-			elements_[i] = other.elements_[i];
-	}
-			
+	size_ = other.size_;
+	capacity_ = other.capacity_;
+	delete [] elements_;
+	elements_ = new int[capacity_];
+	for (int i = 0; i < size_; i++)
+		elements_[i] = other.elements_[i];
 	return *this;
 }
 
