@@ -26,7 +26,7 @@ vector_t & vector_t::operator =(vector_t const & other)
 		capacity_ = other.capacity_;
 		delete [] elements_;
 		elements_ = new int[capacity_];
-		for (int i = 0; i < size-; i++)
+		for (int i = 0; i < size_; i++)
 			elements_[i] = other.elements_[i];
 	}
 			
