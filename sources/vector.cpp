@@ -64,23 +64,31 @@ std::size_t vector_t::capacity() const
 
 void vector_t::push_back(int value)
 {
-	if (size_ == capacity_) capacity_ *= 2;
-	int* elements_2 = new int[capacity_];
-	for (int i = 0; i < size_; i++)
-		elements_2[i] = elements_[i];
-	elements_2[size_] = value;
-	size_++;
-	delete[] elements_;
-	int * elements_ = new int[capacity_];
-	for (int i = 0; i < size_; i++)
-		elements_[i] = elements_2[i];
-	delete[] elements_2;
+	if (capacity_ == 0) {
+		capacity_ = 1;
+		size_ = 1;
+		elements_ = new int[capacity_];
+		elements_[0] = value;
+	}
+	else {
+		if (size_ == capacity_) capacity_ *= 2;
+		int* elements_2 = new int[capacity_];
+		for (int i = 0; i < size_; i++)
+			elements_2[i] = elements_[i];
+		elements_2[size_] = value;
+		size_++;
+		delete[] elements_;
+		int * elements_ = new int[capacity_];
+		for (int i = 0; i < size_; i++)
+			elements_[i] = elements_2[i];
+		delete[] elements_2;
+	}
 }
 
 void vector_t::pop_back()
 {
 	size_ = size_ - 1;
-	if (size_ * 4 <= capacity_) capacity_ = capacity_ / 4;
+	if ((size_ * 4 <= capacity_) && (size_ != 0)) capacity_ = capacity_ / 4;
 	int* elements_2 = new int[capacity_];
 	for (int i = 0; i < size_; i++)
 		elements_2[i] = elements_[i];
@@ -93,7 +101,7 @@ void vector_t::pop_back()
 
 int & vector_t::operator [](std::size_t index)
 {
-	return elements_[0];
+	return elements_[index];
 }
 
 int vector_t::operator [](std::size_t index) const
