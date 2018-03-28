@@ -75,10 +75,7 @@ void vector_t::push_back(int value)
 		elements_2[size_] = value;
 		size_++;
 		delete[] elements_;
-		int * elements_ = new int[capacity_];
-		for (int i = 0; i < size_; i++)
-			elements_[i] = elements_2[i];
-		delete[] elements_2;
+		elements_ = elements_2;
 	}
 }
 
@@ -90,10 +87,7 @@ void vector_t::pop_back()
 	for (int i = 0; i < size_; i++)
 		elements_2[i] = elements_[i];
 	delete[] elements_;
-	elements_ = new int[capacity_];
-	for (int i = 0; i < size_; i++)
-		elements_[i] = elements_2[i];
-	delete[] elements_2;
+	elements_ = elements_2;
 }
 
 int & vector_t::operator [](std::size_t index)
