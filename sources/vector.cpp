@@ -90,7 +90,7 @@ void vector_t::pop_back()
 	for (int i = 0; i < size_; i++)
 		elements_2[i] = elements_[i];
 	delete[] elements_;
-	int * elements_ = new int[capacity_];
+	elements_ = new int[capacity_];
 	for (int i = 0; i < size_; i++)
 		elements_[i] = elements_2[i];
 	delete[] elements_2;
